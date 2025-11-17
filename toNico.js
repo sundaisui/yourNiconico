@@ -91,8 +91,9 @@ function search(userName) {
         productOfCharCodeAndDate *= userName.charCodeAt(i);
     }
     // 日替わり要素を入れるために日付も乗算
-    const today = new Date();
-    const [month, date, year] = [today.getMonth(), today.getDate(), today.getFullYear()];
+    const month = new Date().getMonth();
+    const date = new Date().getDate();
+    const year = new Date().getFullYear();
     productOfCharCodeAndDate = productOfCharCodeAndDate * (month + 1) * date * year;
 
     const lastMovie = 44489567; //2024年内最後の動画の動画番号
