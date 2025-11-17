@@ -12,13 +12,13 @@ searchButton.addEventListener("click", () => {
     }
 
     userNameInput.addEventListener(
-  'keydown',
-  (event) => {
-    if (event.code === 'Enter') {
-      searchButton.dispatchEvent(new Event('click'))
-    }
-  }
-)
+        'keydown',
+        (event) => {
+            if (event.code === 'Enter') {
+                searchButton.dispatchEvent(new Event('click'))
+            }
+        }
+    )
 
 
     // 動画番号を取得
@@ -43,7 +43,7 @@ searchButton.addEventListener("click", () => {
     const source = scriptUrl(movieNum)
     scriptEl.type = 'application/javascript';
     scriptEl.src = source;
-    
+
     // ニコニコプレーヤーの埋め込みその2
     const noscriptEl = document.createElement('noscript');
 
@@ -86,12 +86,17 @@ searchButton.addEventListener("click", () => {
  */
 function search(userName) {
     // 全文字のコード番号を取得してそれを掛け合わせる
-    let productOfCharCode = 1;
-    for(let i=0; i<userName.length; i++){
-        productOfCharCode *= userName.charCodeAt(i);
+    let productOfCharCodeAndDate = 1;
+    for (let i = 0; i < userName.length; i++) {
+        productOfCharCodeAndDate *= userName.charCodeAt(i);
     }
+    // 日替わり要素を入れるために日付も乗算
+    const today = new Date();
+    const [month, date, year] = [today.getMonth(), today.getDate(), today.getFullYear()];
+    productOfCharCodeAndDate = productOfCharCodeAndDate * (month + 1) * date * year;
+
     const lastMovie = 44489567; //2024年内最後の動画の動画番号
-    const result = (productOfCharCode % lastMovie) + 1;
+    const result = (productOfCharCodeAndDate % lastMovie) + 1;
     return result;
 }
 
