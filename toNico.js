@@ -12,10 +12,10 @@ searchButton.addEventListener("click", () => {
     }
 
     userNameInput.addEventListener(
-        'keydown',
+        "keydown",
         (event) => {
-            if (event.code === 'Enter') {
-                searchButton.dispatchEvent(new Event('click'))
+            if (event.code === "Enter") {
+                searchButton.dispatchEvent(new Event("click"))
             }
         }
     )
@@ -41,11 +41,11 @@ searchButton.addEventListener("click", () => {
     const scriptEl = document.createElement("script");
     scriptEl.setAttribute("class", "card-text text-center");
     const source = scriptUrl(movieNum)
-    scriptEl.type = 'application/javascript';
+    scriptEl.type = "application/javascript";
     scriptEl.src = source;
 
     // ニコニコプレーヤーの埋め込みその2
-    const noscriptEl = document.createElement('noscript');
+    const noscriptEl = document.createElement("noscript");
 
     // ニコニコプレーヤーの埋め込みその3
     const movieEl = document.createElement("a");
@@ -70,7 +70,7 @@ searchButton.addEventListener("click", () => {
     const niconicoEl = document.createElement("a");
     niconicoEl.target = "_blank";
     niconicoEl.href = link;
-    niconicoEl.textContent = `ニコニコ動画で開く`;
+    niconicoEl.textContent = "ニコニコ動画で開く";
     niconicoEl.setAttribute("class", "btn btn-dark mt-3");
     niconicoLink.appendChild(niconicoEl);
 
@@ -112,3 +112,4 @@ function aUrl(movieNum) {
     const aUrl = `https://www.nicovideo.jp/watch/sm${movieNum}`
     return aUrl;
 }
+
